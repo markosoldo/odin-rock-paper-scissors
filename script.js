@@ -13,6 +13,22 @@ function getComputerChoice() {
   }
 }
 
+function getPlayerChoice() {
+  const validChoices = ["ROCK", "PAPER", "SCISSORS"];
+  let playerChoice = prompt("Choose between ROCK, PAPER or SCISSORS:");
+
+  if (playerChoice === null) return playerChoice;
+
+  while (!validChoices.includes(playerChoice.toUpperCase())) {
+    alert(
+      "Only ROCK, PAPER and SCISSORS (case insensitive) are valid choices!"
+    );
+    playerChoice = prompt("Choose between ROCK, PAPER or SCISSORS:");
+    if (playerChoice === null) return playerChoice;
+  }
+  return playerChoice;
+}
+
 function playRound(playerChoice, computerChoice) {
   playerChoice = playerChoice.toUpperCase();
 
@@ -65,7 +81,6 @@ function playGame() {
   let computerScore = 0;
   let playerChoice, computerChoice;
   let roundResult;
-  const validChoices = ["ROCK", "PAPER", "SCISSORS"];
 
   console.log("\nNew game:\n");
 
@@ -74,20 +89,13 @@ function playGame() {
     computerChoice = getComputerChoice();
 
     do {
-      playerChoice = prompt("Choose between ROCK, PAPER or SCISSORS:");
+      playerChoice = getPlayerChoice();
       if (playerChoice === null)
         if (window.confirm("Quit current game?")) {
           console.log("\nYou've quit before finishing current game!");
           return;
         }
     } while (playerChoice === null);
-
-    while (!validChoices.includes(playerChoice.toUpperCase())) {
-      alert(
-        "Only ROCK, PAPER and SCISSORS (case insensitive) are valid choices!"
-      );
-      playerChoice = prompt("Choose between ROCK, PAPER or SCISSORS:");
-    }
 
     roundResult = playRound(playerChoice, computerChoice);
     console.log(`Round ${roundCount}: ${roundResult}`);
