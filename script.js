@@ -1,7 +1,7 @@
 //Game logic
 
 function getComputerChoice() {
-  const randomChoice = Math.floor(Math.random() * 3);
+  const randomChoice = Math.floor(Math.random() * 5);
 
   switch (randomChoice) {
     case 0:
@@ -10,6 +10,10 @@ function getComputerChoice() {
       return "PAPER";
     case 2:
       return "SCISSORS";
+    case 3:
+      return "LIZARD";
+    case 4:
+      return "SPOCK";
   }
 }
 

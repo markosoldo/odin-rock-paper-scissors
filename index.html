@@ -3,8 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissors</title>
+    <title>Rock Paper Scissors Lizard Spock</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Electrolize&family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/./favicon/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/./favicon/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/./favicon/favicon-16x16.png" />
+    <link rel="manifest" href="/./favicon/site.webmanifest" />
+
     <script src="script.js" defer></script>
   </head>
-  <body></body>
+
+  <body>
+    <header class="header container">
+      <h1 class="title">ROCK PAPER SCISSORS LIZARD SPOCK</h1>
+    </header>
+
+    <section class="info-msg container">
+      <h2>Score 5 points to win the game!</h2>
+      <hr />
+    </section>
+
+    <section class="buttons container">
+      <button class="btn btn-square" id="rockBtn">
+        <h2><i class="fa-solid fa-hand-back-fist symbol"></i></h2>
+      </button>
+      <button class="btn btn-square" id="paperBtn">
+        <i class="fa-solid fa-hand symbol"></i>
+      </button>
+      <button class="btn btn-square" id="scissorsBtn">
+        <i class="fa-solid fa-hand-scissors symbol"></i>
+      </button>
+      <button class="btn btn-square" id="lizardBtn">
+        <i class="fa-solid fa-hand-lizard symbol"></i>
+      </button>
+      <button class="btn btn-square" id="spockBtn">
+        <i class="fa-solid fa-hand-spock symbol"></i>
+      </button>
+    </section>
+
+    <section class="scoreboard container">
+      <h2 class="round-info" id="roundInfo">&#8679; Choose one &#8679;</h2>
+      <p class="round-info" id="roundMsg">&nbsp;</p>
+      <div class="score-container">
+        <div class="score-box">
+          <i class="fa-solid fa-question symbol" id="playerSymbol"></i>
+          <p class="score" id="playerScore">Player: 0</p>
+        </div>
+        <div class="score-box">
+          <i class="fa-solid fa-question symbol" id="computerSymbol"></i>
+          <p class="score" id="computerScore">Computer: 0</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Copyright <i class="fa-regular fa-copyright"></i> The Odin Project 2024
+      </p>
+    </footer>
+  </body>
 </html>
