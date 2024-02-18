@@ -87,6 +87,8 @@ button {
   border-radius: 10px;
   background-color: var(--btn);
   backdrop-filter: blur(1px);
+  /* Tooltip support */
+  position: relative;
 }
 
 .btn-square {
@@ -104,6 +106,29 @@ button {
 
 .symbol {
   font-size: 5rem;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 100px;
+  background-color: var(--title-bckg);
+  color: var(--title);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 105%;
+  left: 50%;
+  /* Centre tooltip */
+  margin-left: -50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 
 .scoreboard {
