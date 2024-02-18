@@ -7,6 +7,7 @@ const paperSymbolClass = "fa-solid fa-hand symbol";
 const scissorsSymbolClass = "fa-solid fa-hand-scissors symbol";
 const lizardSymbolClass = "fa-solid fa-hand-lizard symbol";
 const spockSymbolClass = "fa-solid fa-hand-spock symbol";
+const questionSymbolClass = "fa-solid fa-question symbol";
 
 const choices = document.querySelector("#containerBtns");
 const roundInfo = document.querySelector("#roundInfo");
@@ -15,8 +16,14 @@ const playerSymbol = document.querySelector("#playerSymbol");
 const computerSymbol = document.querySelector("#computerSymbol");
 const pScore = document.querySelector("#playerScore");
 const cScore = document.querySelector("#computerScore");
+const endGameModal = document.querySelector("#endGameModal");
+const endGameMsg = document.querySelector("#endGameInfo");
+const restartBtn = document.querySelector("#restartBtn");
+const overlay = document.querySelector("#overlay");
 
 choices.addEventListener("click", playRound);
+overlay.addEventListener("click", closeEndGameModal);
+restartBtn.addEventListener("click", restartGame);
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -45,7 +52,11 @@ function getComputerChoice() {
 }
 
 function playRound(e) {
-  // HANDLE ENDGAME LOGIC
+  // Endgame logic
+  if (playerScore === 5 || computerScore === 5) {
+    setGameOver();
+    return;
+  }
 
   let btnId = null;
   let currentNode = e.target;
@@ -87,6 +98,8 @@ function playRound(e) {
 
   computerChoice = getComputerChoice();
   scoreRound(playerChoice, computerChoice);
+
+  if (playerScore === 5 || computerScore === 5) setGameOver();
 }
 
 function scoreRound(playerChoice, computerChoice) {
@@ -188,6 +201,29 @@ function updateScoreboard(roundResult, playerChoice, computerChoice) {
 
   pScore.textContent = `Player: ${playerScore}`;
   cScore.textContent = `Computer: ${computerScore}`;
+}
 
-  // HANDLE ENDGAME LOGIC
+function setGameOver() {
+  playerScore > computerScore
+    ? (endGameMsg.textContent = "You win!")
+    : (endGameMsg.textContent = "Computer wins!");
+
+  // Open endgame modal
+  endGameModal.classList.add("active");
+  overlay.classList.add("active");
+}
+
+function closeEndGameModal() {
+  endGameModal.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+function restartGame() {
+  playerScore = computerScore = 0;
+  roundInfo.innerHTML = "&#8679; Choose one &#8679;";
+  roundMsg.innerHTML = "&nbsp";
+  playerSymbol.classList = computerSymbol.classList = questionSymbolClass;
+  pScore.textContent = "Player: 0";
+  cScore.textContent = "Computer: 0";
+  closeEndGameModal();
 }
