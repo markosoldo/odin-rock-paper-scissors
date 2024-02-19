@@ -9,7 +9,6 @@ const lizardSymbolClass = "fa-solid fa-hand-lizard symbol";
 const spockSymbolClass = "fa-solid fa-hand-spock symbol";
 const questionSymbolClass = "fa-solid fa-question symbol";
 
-const choices = document.querySelector("#containerBtns");
 const roundInfo = document.querySelector("#roundInfo");
 const roundMsg = document.querySelector("#roundMsg");
 const playerSymbol = document.querySelector("#playerSymbol");
@@ -18,12 +17,13 @@ const pScore = document.querySelector("#playerScore");
 const cScore = document.querySelector("#computerScore");
 const endGameModal = document.querySelector("#endGameModal");
 const endGameMsg = document.querySelector("#endGameInfo");
-const restartBtn = document.querySelector("#restartBtn");
 const overlay = document.querySelector("#overlay");
+const gameInfoModal = document.querySelector("#gameInfoModal");
 
-choices.addEventListener("click", playRound);
+document.querySelector("#containerBtns").addEventListener("click", playRound);
 overlay.addEventListener("click", closeEndGameModal);
-restartBtn.addEventListener("click", restartGame);
+document.querySelector("#restartBtn").addEventListener("click", restartGame);
+document.querySelector("#gameRules").addEventListener("click", openGameRules);
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -52,6 +52,9 @@ function getComputerChoice() {
 }
 
 function playRound(e) {
+  let currentNode = e.target;
+  if (currentNode.id === "containerBtns") return;
+
   // Endgame logic
   if (playerScore === 5 || computerScore === 5) {
     setGameOver();
@@ -59,10 +62,8 @@ function playRound(e) {
   }
 
   let btnId = null;
-  let currentNode = e.target;
   let playerChoice, computerChoice;
 
-  if (currentNode.id === "containerBtns") return;
   // Traverse up the DOM tree until we find a button or reach the container
   // For case when symbol inside button is clicked
   while (currentNode.id !== "containerBtns") {
@@ -216,6 +217,7 @@ function setGameOver() {
 function closeEndGameModal() {
   endGameModal.classList.remove("active");
   overlay.classList.remove("active");
+  gameInfoModal.classList.remove("active");
 }
 
 function restartGame() {
@@ -226,4 +228,9 @@ function restartGame() {
   pScore.textContent = "Player: 0";
   cScore.textContent = "Computer: 0";
   closeEndGameModal();
+}
+
+function openGameRules() {
+  gameInfoModal.classList.add("active");
+  overlay.classList.add("active");
 }

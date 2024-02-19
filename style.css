@@ -65,12 +65,60 @@ button {
 }
 
 .info-msg {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   font-size: 1.5rem;
   padding: 0 10px;
 }
 
-.info-msg > hr {
+.game-rules {
+  background-color: var(--btn);
+  border: 3px solid var(--light);
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: 900;
+  width: 50px;
+  height: 50px;
+  /* Tooltip support */
+  position: relative;
+}
+
+.game-rules:hover {
+  background-color: var(--btn-hover);
+}
+
+.game-rules:active {
+  background-color: var(--btn-active);
+}
+
+.rules-tooltip-text {
+  visibility: hidden;
+  width: 100px;
+  background-color: var(--title-bckg);
+  color: var(--light);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 230%;
+  /* Centre tooltip */
+  margin-left: -50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.game-rules:hover .rules-tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+hr {
   width: 550px;
   margin: 10px auto 30px;
 }
@@ -171,7 +219,7 @@ button {
 .modal {
   position: fixed;
   z-index: 1;
-  top: 35%;
+  top: 33%;
   left: 50%;
   width: 300px;
   padding: 30px;
@@ -182,6 +230,11 @@ button {
   user-select: none;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
+}
+
+.game-info-modal {
+  top: 50%;
+  width: auto;
 }
 
 .modal.active {
@@ -222,7 +275,14 @@ button {
     font-size: 26px;
   }
 
-  .info-msg > hr {
+  .game-rules {
+    font-size: 1rem;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+  }
+
+  hr {
     width: 80%;
   }
 
@@ -243,5 +303,13 @@ button {
     width: 60%;
     font-size: 1rem;
     top: 27%;
+  }
+
+  .game-info-modal {
+    width: auto;
+  }
+
+  .game-info-modal img {
+    height: 300px;
   }
 }

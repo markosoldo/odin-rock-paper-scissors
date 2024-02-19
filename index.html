@@ -44,8 +44,12 @@
 
     <section class="info-msg container">
       <h2>Score 5 points to win the game!</h2>
-      <hr />
+      <button class="game-rules" id="gameRules">
+        <span class="rules-tooltip-text">Game rules</span>?
+      </button>
     </section>
+
+    <hr />
 
     <section class="buttons container" id="containerBtns">
       <button class="btn btn-square" id="rockBtn">
@@ -94,6 +98,9 @@
     <div class="modal" id="endGameModal">
       <p class="modal-title" id="endGameInfo"></p>
       <button class="btn btn-restart" id="restartBtn">New game</button>
+    </div>
+    <div class="modal game-info-modal" id="gameInfoModal">
+      <img src="./img/game-rules.svg" alt="Game rules" />
     </div>
     <div class="overlay" id="overlay"></div>
   </body>
