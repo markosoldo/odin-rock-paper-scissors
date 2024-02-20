@@ -27,6 +27,8 @@ body {
   background-image: url(img/carbon_fibre.png);
   color: var(--light);
   font-family: "Roboto", sans-serif;
+  /* Footer support */
+  margin-bottom: 50px;
 }
 
 button {
@@ -203,7 +205,7 @@ hr {
 }
 
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -266,12 +268,16 @@ hr {
   .game-info-modal img {
     height: 200px;
   }
+
+  hr {
+    width: 80%;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 615px) {
   .title,
   .info-msg {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 
   .round-info {
@@ -283,10 +289,6 @@ hr {
     font-weight: 700;
     width: 30px;
     height: 30px;
-  }
-
-  hr {
-    width: 80%;
   }
 
   .buttons {
@@ -310,5 +312,16 @@ hr {
 
   .game-info-modal {
     width: auto;
+  }
+
+  .footer {
+    position: fixed;
+  }
+}
+
+@media (pointer: coarse) {
+  .rules-tooltip-text,
+  .tooltip-text {
+    display: none;
   }
 }
